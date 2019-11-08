@@ -7,6 +7,8 @@ import { PagerComponent } from './pager/pager.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 
+import { GroupService } from './services/group.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    GroupService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

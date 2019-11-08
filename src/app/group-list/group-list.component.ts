@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { GroupService } from '../services/group.service';
+import { Group } from '../models/group';
+
 @Component({
   selector: 'app-group-list',
   templateUrl: './group-list.component.html',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupListComponent implements OnInit {
 
-  constructor() { }
+  groups: Group[];
+
+  constructor(private groupService: GroupService) { }
 
   ngOnInit() {
+  }
+
+  getGroups() {
+    this.groups = this.groupService.getGroups();
   }
 
 }
