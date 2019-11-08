@@ -24,6 +24,9 @@ export class GroupService {
       <Group>{_id:'G11116', name: 'Groupe 4', access: 1, pub: false, owner: user2, description: 'Gestion de projet', url: '', members:[user2, user3]},
       <Group>{_id:'G11117', name: 'Groupe 5', access: 0, pub: false, owner: user2, description: 'Développement', url: '', members:[user2, user3]},
       <Group>{_id:'G11118', name: 'Groupe 6', access: 0, pub: false, owner: user2, description: 'Divers', url: '', members:[user2]},
+      <Group>{_id:'G11119', name: 'Groupe 7', access: 0, pub: false, owner: user3, description: '', url: '', members:[user1, user2]},
+      <Group>{_id:'G11120', name: 'Groupe 8', access: 1, pub: false, owner: user1, description: '', url: '', members:[user2, user3]},
+      <Group>{_id:'G11121', name: 'Groupe 9', access: 0, pub: false, owner: user1, description: '', url: '', members:[user3]},
     ];
 
     return groups;
@@ -32,5 +35,17 @@ export class GroupService {
   // Get single group
   public getGroup() {
     return this.getGroups()[4];
+  }
+
+  // Retourne la tranche des groupes à afficher pour l'affichage
+  public getGroupRange(from, to) {
+    const allGroups = this.getGroups();
+    let groups = [];
+    for (let i = from; i <= to; i++) {
+      if (i < allGroups.length) {
+        groups.push(allGroups[i]);
+      }
+    }
+    return groups;
   }
 }

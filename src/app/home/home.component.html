@@ -6,11 +6,12 @@
   </ng-template>
 
   <ng-template #displayGroupList >
-    <app-group-list (showGroup)="showGroup($event)"></app-group-list>
+
+    <app-group-list (showGroup)="showGroup($event)" [fromto]="fromto"></app-group-list>
 
     <p>&nbsp;</p>
 
-    <app-pager></app-pager>
+    <app-pager [totalelements]="groupCount" [maxperpage]="maxPerPage" [currentpos]="fromto.from" (fromTo)="changeResult($event)"></app-pager>
 
     <div class="log">
       <ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, Output, EventEmitter, Input } from '@angular/core';
 
 import { GroupService } from '../services/group.service';
 import { Group } from '../models/group';
@@ -8,21 +8,20 @@ import { Group } from '../models/group';
   templateUrl: './group-list.component.html',
   styleUrls: ['./group-list.component.scss']
 })
-export class GroupListComponent implements OnInit {
+export class GroupListComponent implements OnChanges {
 
   groups: Group[];
   @Output() showGroup = new EventEmitter<Group>();
-
-  InputgroupDetail
+  @Input() fromto: any;
 
   constructor(private groupService: GroupService) { }
 
-  ngOnInit() {
+  ngOnChanges() {
     this.getGroups();
   }
 
   getGroups() {
-    this.groups = this.groupService.getGroups();
+    this.groups = this.groupService.getGroupRange(this.fromto.from, this.fromto.to);
   }
 
   showGroupDetail(group: Group) {
