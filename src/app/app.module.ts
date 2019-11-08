@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GroupListComponent } from './group-list/group-list.component';
 import { PagerComponent } from './pager/pager.component';
@@ -32,7 +33,8 @@ import { SwitchInputComponent } from './switch-input/switch-input.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     GroupService,

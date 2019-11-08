@@ -1,4 +1,5 @@
-import { Component, OnChanges, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GroupService } from '../services/group.service';
 import { Group } from '../models/group';
@@ -11,10 +12,10 @@ import { Group } from '../models/group';
 export class GroupListComponent implements OnChanges {
 
   groups: Group[];
-  @Output() showGroup = new EventEmitter<Group>();
   @Input() fromto: any;
 
-  constructor(private groupService: GroupService) { }
+  constructor(private groupService: GroupService,
+              private router: Router) { }
 
   ngOnChanges() {
     this.getGroups();
@@ -24,7 +25,7 @@ export class GroupListComponent implements OnChanges {
     this.groups = this.groupService.getGroupRange(this.fromto.from, this.fromto.to);
   }
 
-  showGroupDetail(group: Group) {
-    this.showGroup.emit(group);
+  showGroupDetail(groupID: number) {
+    this.router.navigate(['/view/' + groupID]);
   }
 }

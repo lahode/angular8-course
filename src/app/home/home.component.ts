@@ -35,16 +35,6 @@ export class HomeComponent implements OnInit {
     this.groupCount = this.groupService.getGroups().length;
   }
 
-  // Affiche le composant "Détail d'un groupe"
-  showGroup(group: Group) {
-    this.groupDetail = group;
-  }
-
-  // Affiche le composant "Liste des groupes"
-  hideGroup() {
-    this.groupDetail = null;
-  }
-
   // Modifie la tranche des groupes à afficher (Pagination)
   changeResult(fromTo: any) {
     this.fromto = fromTo;

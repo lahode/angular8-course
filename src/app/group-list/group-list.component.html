@@ -3,8 +3,8 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3"
-         *ngFor="let group of groups">
-      <div class="card" [ngClass]="group.access ? 'private' : ''" (click)="showGroupDetail(group)">
+         *ngFor="let group of groups; let i = index">
+      <div class="card" [ngClass]="group.access ? 'private' : ''" (click)="showGroupDetail(i + fromto.from)">
         <h3>{{ group.name }}</h3>
         <p>{{ group.description }}</p>
       </div>
