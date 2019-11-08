@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
 import { GroupListComponent } from './group-list/group-list.component';
@@ -14,7 +15,7 @@ import { LogService } from './services/log.service';
 
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { GroupEditComponent } from './group-edit/group-edit.component';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { SwitchInputComponent } from './switch-input/switch-input.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     MenuComponent,
     HomeComponent,
     GroupDetailComponent,
-    GroupEditComponent
+    GroupEditComponent,
+    SwitchInputComponent
   ],
   imports: [
     BrowserModule,

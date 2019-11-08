@@ -23,7 +23,7 @@
         </select>
       </div>
       <div class="checkbox">
-          <label><input type="checkbox" [(ngModel)]="group.pub"> Visible</label>
+          <app-switch-input [value]="group.pub" (input)="changeVisibility($event)"></app-switch-input>
       </div>
       <div class="form-row text-center">
      </div>

@@ -32,6 +32,10 @@ export class GroupEditComponent implements OnInit {
     this.group.url = event.target.value;
   }
 
+  changeVisibility(visibility: boolean) {
+    this.group.pub = visibility;
+  }
+
   cancel() {
     this.bsModalRef.hide();
   }
