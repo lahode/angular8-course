@@ -17,7 +17,6 @@ export class PagerComponent implements OnInit {
 
   ngOnInit() {
     this.totalElements = Array(this.totalelements).fill(0).map((x,i)=>i);
-    console.log(this.totalElements)
   }
 
   changePosition(newPosition: number) {

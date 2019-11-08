@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { GroupListComponent } from './group-list/group-list.component';
 import { PagerComponent } from './pager/pager.component';
@@ -12,6 +14,7 @@ import { LogService } from './services/log.service';
 
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { GroupEditComponent } from './group-edit/group-edit.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -24,11 +27,17 @@ import { GroupEditComponent } from './group-edit/group-edit.component';
     GroupEditComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [
     GroupService,
     LogService
+  ],
+  entryComponents: [
+    GroupEditComponent
   ],
   bootstrap: [AppComponent]
 })

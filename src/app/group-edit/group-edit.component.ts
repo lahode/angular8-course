@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Group } from '../models/group';
+import { User } from '../models/user';
+
+import { BsModalRef } from 'ngx-bootstrap/modal';
+
+const options = ['Tout le monde a accès au groupe',
+                 'Seul les membres du groupe peuvent y avoir accès'];
 
 @Component({
   selector: 'app-group-edit',
@@ -7,9 +14,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(public bsModalRef: BsModalRef) {}
+
+  group: Group;
+  user: User;
+  accessOptions: string[] = [];
 
   ngOnInit() {
+    this.accessOptions = options;
+    if (!this.group) {
+      this.user = <User>{_id: '1', username: 'soloh', firstname: 'Han', lastname: 'Solo'};
+      this.group = <Group>{_id:'', name: '', access: 0, pub: false, owner: this.user, description: '', url: ''};
+    }
   }
 
+  changeUrl(event: any) {
+    this.group.url = event.target.value;
+  }
+
+  cancel() {
+    this.bsModalRef.hide();
+  }
+
+  save() {
+    this.bsModalRef.hide();
+  }
 }

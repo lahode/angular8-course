@@ -1,34 +1,42 @@
 <div id="group-edit">
-    <h2>Gérer le groupe</h2>
+    <div class="modal-header">
+      <h2>Gérer le groupe</h2>
+    </div>
+    <div class="modal-body">
     <div class="container">
       <div class="form-group">
         <label for="name">Nom</label>
-        <input type="text" class="form-control" id="name" />
+        <input type="text" class="form-control" id="name" [(ngModel)]="group.name" />
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description"></textarea>
+        <textarea class="form-control" id="description" [(ngModel)]="group.description"></textarea>
       </div>
       <div class="form-group">
         <label for="url">URL</label>
-        <input type="text" class="form-control" id="url" />
+        <input type="text" class="form-control" id="url" [value]="group.url" (input)="changeUrl($event)" />
       </div>
       <div class="form-group">
         <label for="access">Accès</label>
-        <select class="form-control" id="access">
-          <option value="">Tout le monde a accès au groupe</option>
-          <option value="">Seul les membres du groupe peuvent y avoir accès</option>
+        <select class="form-control" id="access" [(ngModel)]="group.access">
+          <option *ngFor="let opt of accessOptions; let i = index" [value]="i">{{ opt }}</option>
         </select>
       </div>
       <div class="checkbox">
-        <label><input type="checkbox"> Visible</label>
+          <label><input type="checkbox" [(ngModel)]="group.pub"> Visible</label>
       </div>
       <div class="form-row text-center">
-        <div class="col-12">
-          <button type="submit" class="btn btn-secondary">Annuler</button>
-          <button type="submit" class="btn btn-primary">Valider</button>
-        </div>
      </div>
+
+     {{ group | json }}
+
+    </div>
+    </div>
+    <div class="modal-footer">
+      <div class="col-12">
+        <button type="submit" class="btn btn-secondary" (click)="cancel()">Annuler</button>
+        <button type="submit" class="btn btn-primary" (click)="save()">Valider</button>
+      </div>
     </div>
   </div>
   

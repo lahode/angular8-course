@@ -13,6 +13,10 @@
 
     <app-pager [totalelements]="groupCount" [maxperpage]="maxPerPage" [currentpos]="fromto.from" (fromTo)="changeResult($event)"></app-pager>
 
+    <p style="text-align:center;padding-top:50px;">
+      <button class="btn btn-primary" (click)="new()">Nouveau</button>
+    </p>
+
     <div class="log">
       <ul>
         <li *ngFor="let grouplog of logGroupSeen">{{ grouplog }}</li>
