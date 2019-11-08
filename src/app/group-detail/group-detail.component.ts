@@ -1,6 +1,7 @@
 import { Component, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 
 import { Group } from '../models/group';
+import { LogService } from '../services/log.service';
 
 @Component({
   selector: 'app-group-detail',
@@ -12,6 +13,8 @@ export class GroupDetailComponent implements OnDestroy {
   @Input() group: Group;
   @Output() hideGroup = new EventEmitter<boolean>();
 
+  constructor(private logService: LogService) { }
+
   getMemberCount() {
     return this.group.members ? this.group.members.length : '';
   }
@@ -21,7 +24,7 @@ export class GroupDetailComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    alert("Je reviens à l'accueil");
+    this.logService.addLog(new Date(Date.now()).toLocaleString() + ' - ' + this.group.name);
   }
 
 }

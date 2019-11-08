@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Group } from '../models/group';
+import { LogService } from '../services/log.service';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,14 @@ import { Group } from '../models/group';
 export class HomeComponent implements OnInit {
 
   groupDetail: Group | null = null;
+  logGroupSeen: string[] = [];
 
-  constructor() { }
+  constructor(private logService: LogService) { }
 
   ngOnInit() {
+    this.logService.getLogs().subscribe((logGroupSeen) => {
+      this.logGroupSeen = logGroupSeen;
+    });
   }
 
   showGroup(group: Group) {

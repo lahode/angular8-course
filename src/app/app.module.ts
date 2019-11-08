@@ -8,6 +8,8 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 
 import { GroupService } from './services/group.service';
+import { LogService } from './services/log.service';
+
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { GroupEditComponent } from './group-edit/group-edit.component';
 
@@ -25,7 +27,8 @@ import { GroupEditComponent } from './group-edit/group-edit.component';
     BrowserModule
   ],
   providers: [
-    GroupService
+    GroupService,
+    LogService
   ],
   bootstrap: [AppComponent]
 })
