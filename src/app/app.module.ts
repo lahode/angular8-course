@@ -8,6 +8,8 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 
 import { GroupService } from './services/group.service';
+import { GroupDetailComponent } from './group-detail/group-detail.component';
+import { GroupEditComponent } from './group-edit/group-edit.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { GroupService } from './services/group.service';
     GroupListComponent,
     PagerComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    GroupDetailComponent,
+    GroupEditComponent
   ],
   imports: [
     BrowserModule
