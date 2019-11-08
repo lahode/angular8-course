@@ -6,7 +6,7 @@
           <span class="label">ID</span>
         </div>
         <div class="col col-sm-8">
-          <span>G11117</span>
+          <span>{{ group?._id}}</span>
         </div>
       </div>
       <div class="row">
@@ -14,7 +14,7 @@
           <span class="label">Owner</span>
         </div>
         <div class="col col-sm-8">
-          <span><a href="">Jon Do</a></span>
+          <span><a href="">{{ group?.owner?.firstname }} {{ group?.owner?.lastname }}</a></span>
         </div>
       </div>
       <div class="row">
@@ -22,7 +22,7 @@
           <span class="label">Description</span>
         </div>
         <div class="col col-sm-8">
-          <span>Développement</span>
+          <span>{{ group?.description }}</span>
         </div>
       </div>
       <div class="row">
@@ -30,7 +30,7 @@
           <span class="label">URL</span>
         </div>
         <div class="col col-sm-8">
-          <span>&nbsp;</span>
+          <span>{{ group?.url }}</span>
         </div>
       </div>  
       <div class="row">
@@ -38,7 +38,7 @@
           <span class="label">Public</span>
         </div>
         <div class="col col-sm-8">
-          <span>Non</span>
+          <span>{{ group?.pub ? 'Oui' : 'Non' }}</span>
         </div>
       </div>
       <div class="row">
@@ -49,14 +49,13 @@
           <span>2015-03-11 13:59:30</span>
         </div>
       </div>
-      <div class="row">
+      <div class="row" *ngIf="group?.members">
         <div class="col col-sm-4">
-          <span class="label">2 membres</span>
+          <span class="label">{{ getMemberCount() }} membres</span>
         </div>
         <div class="col col-sm-8">
           <ul>
-            <li><a href="#">Jon Do</a></li>
-            <li><a href="#">Henri Emmanuel</a></li>
+          <li *ngFor="let member of group.members"><a href="#">{{ member.firstname }} {{ member.lastname}}</a></li>
           </ul>
         </div>
       </div>

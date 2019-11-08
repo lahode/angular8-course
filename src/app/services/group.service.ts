@@ -21,7 +21,7 @@ export class GroupService {
       <Group>{_id:'G11113', name: 'Groupe 1', access: 0, pub: false, owner: user2, description: 'Direction', url: '', members:[user1]},
       <Group>{_id:'G11114', name: 'Groupe 2', access: 0, pub: false, owner: user2, description: 'Analystes', url: '', members:[user1, user3]},
       <Group>{_id:'G11115', name: 'Groupe 3', access: 0, pub: false, owner: user2, description: 'Experts', url: '', members:[user1]},
-      <Group>{_id:'G11116', name: 'Groupe 4', access: 0, pub: false, owner: user2, description: 'Gestion de projet', url: '', members:[user2, user3]},
+      <Group>{_id:'G11116', name: 'Groupe 4', access: 1, pub: false, owner: user2, description: 'Gestion de projet', url: '', members:[user2, user3]},
       <Group>{_id:'G11117', name: 'Groupe 5', access: 0, pub: false, owner: user2, description: 'Développement', url: '', members:[user2, user3]},
       <Group>{_id:'G11118', name: 'Groupe 6', access: 0, pub: false, owner: user2, description: 'Divers', url: '', members:[user2]},
     ];
@@ -29,4 +29,8 @@ export class GroupService {
     return groups;
   }
 
+  // Get single group
+  public getGroup() {
+    return this.getGroups()[4];
+  }
 }

@@ -15,6 +15,7 @@ export class GroupListComponent implements OnInit {
   constructor(private groupService: GroupService) { }
 
   ngOnInit() {
+    this.getGroups();
   }
 
   getGroups() {
