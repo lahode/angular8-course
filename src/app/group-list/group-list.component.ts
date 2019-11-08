@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { GroupService } from '../services/group.service';
 import { Group } from '../models/group';
@@ -11,6 +11,9 @@ import { Group } from '../models/group';
 export class GroupListComponent implements OnInit {
 
   groups: Group[];
+  @Output() showGroup = new EventEmitter<Group>();
+
+  InputgroupDetail
 
   constructor(private groupService: GroupService) { }
 
@@ -22,4 +25,7 @@ export class GroupListComponent implements OnInit {
     this.groups = this.groupService.getGroups();
   }
 
+  showGroupDetail(group: Group) {
+    this.showGroup.emit(group);
+  }
 }

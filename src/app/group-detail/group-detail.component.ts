@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 
-import { GroupService } from '../services/group.service';
 import { Group } from '../models/group';
 
 @Component({
@@ -8,18 +7,21 @@ import { Group } from '../models/group';
   templateUrl: './group-detail.component.html',
   styleUrls: ['./group-detail.component.scss']
 })
-export class GroupDetailComponent implements OnInit {
+export class GroupDetailComponent implements OnDestroy {
 
-  group: Group;
-
-  constructor(private groupService: GroupService) { }
-
-  ngOnInit() {
-    this.group = this.groupService.getGroup();
-  }
+  @Input() group: Group;
+  @Output() hideGroup = new EventEmitter<boolean>();
 
   getMemberCount() {
     return this.group.members ? this.group.members.length : '';
+  }
+
+  leaveGroupDetail() {
+    this.hideGroup.emit(true);
+  }
+
+  ngOnDestroy() {
+    alert("Je reviens à l'accueil");
   }
 
 }

@@ -1,9 +1,17 @@
 <div id="home">
   <h2>Liste des groupes</h2>
 
-  <app-group-list></app-group-list>
+  <div *ngIf="groupDetail; then displayGroupDetail else displayGroupList"></div>
 
-  <p>&nbsp;</p>
+  <ng-template #displayGroupDetail >
+    <app-group-detail [group]="groupDetail" (hideGroup)="hideGroup()"></app-group-detail>
+  </ng-template>
 
-  <app-pager></app-pager>
+  <ng-template #displayGroupList >
+    <app-group-list (showGroup)="showGroup($event)"></app-group-list>
+
+    <p>&nbsp;</p>
+
+    <app-pager></app-pager>
+  </ng-template>
 </div>
