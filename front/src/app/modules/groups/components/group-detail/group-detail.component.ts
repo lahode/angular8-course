@@ -15,6 +15,7 @@ import { GroupEditComponent } from '../group-edit/group-edit.component';
 export class GroupDetailComponent implements OnInit, OnDestroy {
 
   group: Group;
+  error: string = '';
   bsModalRef: BsModalRef;
 
   constructor(private logService: LogService,
@@ -25,7 +26,12 @@ export class GroupDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.params.subscribe( params => {
-      this.group = this.groupService.getGroup(params['id']);
+      this.groupService.getGroup(params['id']).subscribe((group) => {
+        this.group = group.group;
+        this.logService.addLog(new Date(Date.now()).toLocaleString() + ' - ' + this.group.name);
+      }, error => {
+        this.error = error;
+      });
     });
   }
 

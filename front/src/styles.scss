@@ -3,3 +3,9 @@
 @import "../node_modules/bootswatch/dist/materia/variables";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/bootswatch/dist/materia/bootswatch";
+
+.error {
+  text-align: center;
+  font-size: 1.2em;
+  color: red;
+}

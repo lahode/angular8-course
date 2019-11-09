@@ -5,7 +5,7 @@ export interface Group {
   name: string;
   access: number;
   pub: boolean;
-  owner: User;
+  owner: User | string;
   description?: string;
   url?: string;
   members?: User[];

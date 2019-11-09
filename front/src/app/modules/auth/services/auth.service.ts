@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from "rxjs";
 import { map, catchError } from 'rxjs/operators';
-import { HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../../../environments/environment';
 import { User } from '../../../models/user';
@@ -39,11 +38,8 @@ export class AuthService {
 
   // Check authentication
   public checkAuth() : Observable<any> {
-    // Define headers with token in localstorage
-    this.headers = {headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))};
-
     // Launch request
-    return this.http.get(environment.endpoint + '/api/check-auth', this.headers)
+    return this.http.get(environment.endpoint + '/api/check-auth')
       .pipe(
         map((response:any) => {
           this.authUser.next(response.user);

@@ -21,6 +21,7 @@ export class GroupListComponent implements OnChanges, OnInit {
   maxPerPage: number = MAX_PER_PAGE;
   fromto: any = {from: 0, to: MAX_PER_PAGE - 1};
   bsModalRef: BsModalRef;
+  error: string = '';
 
   constructor(private groupService: GroupService,
               private modalService: BsModalService,
@@ -28,7 +29,6 @@ export class GroupListComponent implements OnChanges, OnInit {
 
   // Lance la récupération des groupes à la création du composant
   ngOnInit() {
-    this.groupCount = this.groupService.getGroups().length;
     this.getGroups();
   }
 
@@ -37,7 +37,14 @@ export class GroupListComponent implements OnChanges, OnInit {
   }
 
   getGroups() {
-    this.groups = this.groupService.getGroupRange(this.fromto.from, this.fromto.to);
+    let from = this.fromto.from;
+    let to = this.fromto.to;
+    this.groupService.getGroupRange(from, to).subscribe((response) => {
+      this.groups = response.groups;
+      this.groupCount = response.total;
+    }, error => {
+      this.error = error;
+    });
   }
 
   showGroupDetail(groupID: number) {

@@ -4,6 +4,8 @@ import { User } from '../../../../models/user';
 
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
+import { GroupService } from '../../services/group.service';
+
 const options = ['Tout le monde a accès au groupe',
                  'Seul les membres du groupe peuvent y avoir accès'];
 
@@ -14,17 +16,17 @@ const options = ['Tout le monde a accès au groupe',
 })
 export class GroupEditComponent implements OnInit {
 
-  constructor(public bsModalRef: BsModalRef) {}
+  constructor(public bsModalRef: BsModalRef,
+              private groupService: GroupService) {}
 
   group: Group;
-  user: User;
+  error: string = '';
   accessOptions: string[] = [];
 
   ngOnInit() {
     this.accessOptions = options;
     if (!this.group) {
-      this.user = <User>{_id: '1', username: 'soloh', firstname: 'Han', lastname: 'Solo'};
-      this.group = <Group>{_id:'', name: '', access: 0, pub: false, owner: this.user, description: '', url: ''};
+      this.group = <Group>{_id: undefined, name: '', access: 0, pub: false, owner: null, description: '', url: ''};
     }
   }
 
@@ -41,6 +43,11 @@ export class GroupEditComponent implements OnInit {
   }
 
   save() {
-    this.bsModalRef.hide();
+    this.group.owner = this.group.owner['_id'];
+    this.groupService.save(this.group).subscribe((e) => {
+      this.bsModalRef.hide();
+    }, error => {
+      this.error = error;
+    });
   }
 }
