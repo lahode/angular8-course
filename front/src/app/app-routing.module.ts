@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthguardService } from './modules/auth/services/authguard.service';
+
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
@@ -9,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'groups',
-    loadChildren: () => import('./modules/groups/groups.module').then(m => m.GroupsModule)
+    loadChildren: () => import('./modules/groups/groups.module').then(m => m.GroupsModule),
+    canActivate: [AuthguardService]
   },
   {
     path: '**',

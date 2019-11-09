@@ -36,6 +36,8 @@ export class SigninComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.signInFormSubscription.unsubscribe();
+    if(this.signInFormSubscription) {
+      this.signInFormSubscription.unsubscribe();
+    }
   }
 }
