@@ -1,0 +1,39 @@
+<div id="group-edit">
+  <div class="modal-header">
+    <h2>Gérer le groupe</h2>
+  </div>
+  <div class="modal-body">
+  <div class="container">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="group.name" />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" [(ngModel)]="group.description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="url">URL</label>
+      <input type="text" class="form-control" id="url" [value]="group.url" (input)="changeUrl($event)" />
+    </div>
+    <div class="form-group">
+      <label for="access">Accès</label>
+      <select class="form-control" id="access" [(ngModel)]="group.access">
+        <option *ngFor="let opt of accessOptions; let i = index" [value]="i">{{ opt }}</option>
+      </select>
+    </div>
+    <div class="checkbox">
+        <app-switch-input [value]="group.pub" (input)="changeVisibility($event)"></app-switch-input>
+    </div>
+    <div class="form-row text-center">
+   </div>
+
+  </div>
+  </div>
+  <div class="modal-footer">
+    <div class="col-12">
+      <button type="submit" class="btn btn-secondary" (click)="cancel()">Annuler</button>
+      <button type="submit" class="btn btn-primary" (click)="save()">Valider</button>
+    </div>
+  </div>
+</div>

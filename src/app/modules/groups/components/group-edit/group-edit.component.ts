@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Group } from '../models/group';
-import { User } from '../models/user';
+import { Group } from '../../models/group';
+import { User } from '../../../../models/user';
 
 import { BsModalRef } from 'ngx-bootstrap/modal';
 

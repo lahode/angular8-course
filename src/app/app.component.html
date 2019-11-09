@@ -6,6 +6,12 @@
 
   <router-outlet></router-outlet>
 
+  <div class="log">
+    <ul>
+      <li *ngFor="let grouplog of logGroupSeen">{{ grouplog }}</li>
+    </ul>
+  </div>
+  
 </div>
 
 

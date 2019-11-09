@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Group } from '../models/group';
-import { LogService } from '../services/log.service';
-import { GroupService } from '../services/group.service';
+import { Group } from '../../models/group';
+import { LogService } from '../../../../services/log.service';
+import { GroupService } from '../../services/group.service';
 import { GroupEditComponent } from '../group-edit/group-edit.component';
 
 @Component({
@@ -34,7 +34,7 @@ export class GroupDetailComponent implements OnInit, OnDestroy {
   }
 
   leaveGroupDetail() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/groups/list']);
   }
 
   ngOnDestroy() {

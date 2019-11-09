@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { GroupDetailComponent } from './group-detail/group-detail.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
@@ -9,8 +8,8 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'view/:id',
-    component: GroupDetailComponent
+    path: 'groups',
+    loadChildren: () => import('./modules/groups/groups.module').then(m => m.GroupsModule)
   },
   {
     path: '**',
