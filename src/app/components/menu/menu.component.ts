@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
+import { SigninComponent } from '../../modules/auth/components/signin/signin.component';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  isCollapsed = true;
+  bsModalRef: BsModalRef;
+
+  constructor(private modalService: BsModalService) {}
 
   ngOnInit() {
+  }
+
+  showConnectModal() {
+    this.bsModalRef = this.modalService.show(SigninComponent);
   }
 
 }

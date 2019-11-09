@@ -2,9 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -12,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { GroupService } from './modules/groups/services/group.service';
 import { LogService } from './services/log.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { LogService } from './services/log.service';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    AuthModule,
+    ModalModule.forRoot(),
+    CollapseModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     GroupService,
