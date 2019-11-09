@@ -1,0 +1,47 @@
+{
+  "name": "groups-server",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:server",
+    "serve": "webpack --watch --config ./config/server.webpack.js --mode development",
+    "build:server": "webpack --config ./config/server.webpack.js --mode production"
+  },
+  "engines": {
+    "node": "~7.0.0"
+  },
+  "version": "0.0.1",
+  "description": "NodeJS REST TS for groups-application",
+  "dependencies": {
+    "app-root-path": "^2.2.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "nedb": "^1.8.0",
+    "nedb-promises": "^2.0.1",
+    "nodemailer": "^6.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@types/body-parser": "^1.17.1",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.2",
+    "@types/node": "^12.12.6",
+    "@types/nodemailer": "^6.2.2",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "nodemon": "^1.19.4",
+    "nodemon-webpack-plugin": "^4.1.1",
+    "terser-webpack-plugin": "^2.2.1",
+    "tslint": "^5.20.1",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
