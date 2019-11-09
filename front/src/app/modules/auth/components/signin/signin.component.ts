@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Subscription } from 'rxjs';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit, OnDestroy {
 
   public signInform: FormGroup;
+  public error: string;
+  private signInFormSubscription: Subscription;
 
   constructor(private fb: FormBuilder,
-              public bsModalRef: BsModalRef) {}
+              public bsModalRef: BsModalRef,
+              private auth: AuthService) {}
 
   ngOnInit() {
     // Initialize authenticate form.
@@ -25,7 +30,12 @@ export class SigninComponent implements OnInit {
 
   // Sign in the user
   signIn() {
-    console.log('Values: ', this.signInform.value);
-    this.bsModalRef.hide();
+    this.signInFormSubscription = this.auth.login(this.signInform.value).subscribe(u => {
+      this.bsModalRef.hide();
+    }, error => this.error = error);
+  }
+
+  ngOnDestroy(): void {
+    this.signInFormSubscription.unsubscribe();
   }
 }
